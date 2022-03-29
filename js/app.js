@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 // ************ GLOBAL VARIABLES ************
 
@@ -10,6 +10,7 @@ let dealerHand = [];
 let playerChips = 0;
 let handTotal = 0;
 let bet = 0;
+let insurance = false;
 
 
 // ************ CONSTRUCTOR FUNCTIONS ************
@@ -17,7 +18,7 @@ let bet = 0;
 function Card (name, value){
   this.name = name;
   this.value = value;
-  this.img = `img/${name}.jpg` // may need to change filetype
+  this.img = `img/${name}.jpg`; // may need to change filetype
 
   cardList.push(this);
 }
@@ -89,7 +90,7 @@ new Card('king-diamonds', 10);
 
 // ************ HELPER FUNCTIONS ************
 
-// Shuffle stack of cards. 
+// Shuffle stack of cards.
 
 function shuffle(){
   deck = [];
@@ -103,7 +104,7 @@ function shuffle(){
           deck.push(cardList[index]);
         } else {
           index = Math.floor(Math.random() * cardList.length);
-  
+
         }
       }
 
@@ -114,7 +115,8 @@ function shuffle(){
 
 // Deals opening hand to dealer and user
 
-function openingHand(){ 
+function openingHand(){
+  let handTotal = 0;
   let card = deck.pop();
   userHand[0] = card;
   card = deck.pop();
@@ -122,38 +124,104 @@ function openingHand(){
   card = deck.pop();
   userHand[1] = card;
   card = deck.pop();
-  dealerHand[1] = card; 
+  dealerHand[1] = card;
+
+  if(dealerHand[0].value === 11) {
+    // Dealer asks players if they want insurance
+
+    // Player has choice to risk .5 times their bet extra || if dealer has 21, player keeps bet, if not, lose insurance
+    if(bet = 1) {// placeholder for if player takes insurance
+      insurance = true;
+    }
+  }
+
+  for(let i in dealerHand) {
+    handTotal+=dealerHand[i].value;
+  }
+
+  if(handTotal === 21){
+    if(insurance === true){
+      playerChips += bet;
+      bet = 0;
+      // Dealer informs player they have 21
+    } else{
+      bet = 0;
+      // Dealer informs player they have 21
+      userHand = [];
+      dealerHand = [];
+    }
+    return;
+  }
+
+  if(insurance === true) {
+    bet = 0;
+    return;
+  }
+
+  for(let i in userHand) {
+    handTotal+=userHand[i].value;
+  }
+  if(handTotal === 21){
+    let payout = bet * 2.5;
+    playerChips+=payout;
+    // Dealer informs player the player has 21
+    userHand = [];
+    dealerHand = [];
+  }
+  // Dealer informs player of hand total
 }
 
-// Player wants a card. 
+// Player wants a card.
 
 function hit(){
-  let card = deck.pop
+  let card = deck.pop();
   userHand.push(card);
   let handTotal = 0;
-  for(i in userHand){
-    handTotal += userHand[i].value; //IN PROGRESS
+  for(let i in userHand){
+    handTotal += userHand[i].value;
   }
   if (handTotal > 21){
-    if (handTotal.includes(Card.value(11)))
-    bet = 0;
+    if (handTotal.includes(Card.value(11))){ // Not sure if this is the correct way to reference the value, please check!!!!!!!!!!!!!
+      handTotal-=10;
+    } else {
+      bet = 0;
+      userHand = [];
+      dealerHand = [];
+    }
   } else {
-// Dealer informs player of what their hand total is.
+  // Dealer informs player of what their hand total is.
   }
 }
 
-// Player bet. 
+// Player bet.
+function bet() {
+  // Add money to bet based on form input in gameroom.html
 
+  // Remove money from playerChips equal to the amount bet
+}
 
-// Double. 
+// Double.
+function double() {
 
+}
 
 // Split.
+function split() {
 
+}
 
-// Pass/Dealer takes over. 
+// Pass/Dealer takes over.
+function pass() {
 
+}
 
 // If the dealer and the player both have cards under 22, check who wins!!
 
+// ************ TURN ORDER ************
 
+shuffle();
+openingHand();
+
+if(userHand.length > 0) {
+
+}
