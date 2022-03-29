@@ -1,1 +1,76 @@
-/* css for index.html */
+body {
+  background-color: #006400;
+}
+
+h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 6em;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 50px;
+  color: #eae0d5
+}
+
+h2 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3em;
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+
+div {
+  width: 650px;
+  background-color: #adc178;
+  border: 5px solid #004b23;
+  margin: 40px;
+  /* display: inline-block; */
+}
+
+#top {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 50px;
+}
+
+#top #left {
+  width: 500px;
+  height: 500px;
+  position: relative;
+  font-size: ;
+}
+
+#top #middle {
+  position: relative;
+  width:500px;
+  height: 500px;
+}
+
+#middle iframe {
+  align-items: center;
+  margin-left: 27px;
+  padding-top: 10px;
+}
+
+#top #right {
+  display: relative;
+  width: 500px;
+  height: 500px;
+}
+
+
+#bottom {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#play img {
+  width: 650px;
+  height: 600px;
+}
+
+#cheatsheet img {
+  padding: 75px;
+  width: 500px;
+  height: 500px;
+}
