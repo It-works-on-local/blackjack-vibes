@@ -26,59 +26,60 @@ function Card (name, value){
 
 
 // ************ OBJECT INSTANTIATION ************
+new Card('ace-diamonds', 11);
 
 new Card('ace-spades', 11);
 new Card('ace-hearts', 11);
 new Card('ace-clubs', 11);
 new Card('ace-diamonds', 11);
-new Card('two-spades', 2);
-new Card('two-hearts', 2);
-new Card('two-clubs', 2);
-new Card('two-diamonds', 2);
-new Card('three-spades', 3);
-new Card('three-hearts', 3);
-new Card('three-clubs', 3);
-new Card('three-diamonds', 3);
-new Card('four-spades', 4);
-new Card('four-hearts', 4);
-new Card('four-clubs', 4);
-new Card('four-diamonds', 4);
-new Card('five-spades', 5);
-new Card('five-hearts', 5);
-new Card('five-clubs', 5);
-new Card('five-diamonds', 5);
-new Card('six-spades', 6);
-new Card('six-hearts', 6);
-new Card('six-clubs', 6);
-new Card('six-diamonds', 6);
-new Card('seven-spades', 7);
-new Card('seven-hearts', 7);
-new Card('seven-clubs', 7);
-new Card('seven-diamonds', 7);
-new Card('eight-spades', 8);
-new Card('eight-hearts', 8);
-new Card('eight-clubs', 8);
-new Card('eight-diamonds', 8);
-new Card('nine-spades', 9);
-new Card('nine-hearts', 9);
-new Card('nine-clubs', 9);
-new Card('nine-diamonds', 9);
-new Card('ten-spades', 10);
-new Card('ten-hearts', 10);
-new Card('ten-clubs', 10);
-new Card('ten-diamonds', 10);
-new Card('jack-spades', 10);
-new Card('jack-hearts', 10);
-new Card('jack-clubs', 10);
-new Card('jack-diamonds', 10);
-new Card('queen-spades', 10);
-new Card('queen-hearts', 10);
-new Card('queen-clubs', 10);
-new Card('queen-diamonds', 10);
-new Card('king-spades', 10);
-new Card('king-hearts', 10);
-new Card('king-clubs', 10);
-new Card('king-diamonds', 10);
+// new Card('two-spades', 2);
+// new Card('two-hearts', 2);
+// new Card('two-clubs', 2);
+// new Card('two-diamonds', 2);
+// new Card('three-spades', 3);
+// new Card('three-hearts', 3);
+// new Card('three-clubs', 3);
+// new Card('three-diamonds', 3);
+// new Card('four-spades', 4);
+// new Card('four-hearts', 4);
+// new Card('four-clubs', 4);
+// new Card('four-diamonds', 4);
+// new Card('five-spades', 5);
+// new Card('five-hearts', 5);
+// new Card('five-clubs', 5);
+// new Card('five-diamonds', 5);
+// new Card('six-spades', 6);
+// new Card('six-hearts', 6);
+// new Card('six-clubs', 6);
+// new Card('six-diamonds', 6);
+// new Card('seven-spades', 7);
+// new Card('seven-hearts', 7);
+// new Card('seven-clubs', 7);
+// new Card('seven-diamonds', 7);
+// new Card('eight-spades', 8);
+// new Card('eight-hearts', 8);
+// new Card('eight-clubs', 8);
+// new Card('eight-diamonds', 8);
+// new Card('nine-spades', 9);
+// new Card('nine-hearts', 9);
+// new Card('nine-clubs', 9);
+// new Card('nine-diamonds', 9);
+// new Card('ten-spades', 10);
+// new Card('ten-hearts', 10);
+// new Card('ten-clubs', 10);
+// new Card('ten-diamonds', 10);
+// new Card('jack-spades', 10);
+// new Card('jack-hearts', 10);
+// new Card('jack-clubs', 10);
+// new Card('jack-diamonds', 10);
+// new Card('queen-spades', 10);
+// new Card('queen-hearts', 10);
+// new Card('queen-clubs', 10);
+// new Card('queen-diamonds', 10);
+// new Card('king-spades', 10);
+// new Card('king-hearts', 10);
+// new Card('king-clubs', 10);
+// new Card('king-diamonds', 10);
 
 
 
@@ -185,8 +186,16 @@ function hit(){
     handTotal += userHand[i].value;
   }
   if (handTotal > 21){
-    if (handTotal.includes(Card.value(11))){ // Not sure if this is the correct way to reference the value, please check!!!!!!!!!!!!!
-      handTotal-=10;
+    if (handTotal > 21){ 
+      let aces = 0;
+      for(let i in userHand) {
+        if (userHand[i].value === 11){
+          aces ++;
+          while(handTotal > 21 && aces > 0){
+          handTotal -= 10;
+          }
+        }
+      }
     } else {
       bet = 0;
       userHand = [];
@@ -198,7 +207,7 @@ function hit(){
 }
 
 // Player bet.
-function bet() {
+function betting() {
   // Add money to bet based on form input in gameroom.html
 
   // Remove money from playerChips equal to the amount bet
@@ -208,13 +217,27 @@ function bet() {
 function double() {
   let oneMoreCard = deck.pop();
   userHand.push(oneMoreCard);
+  handTotal = 0;
   for(let i in userHand){
-    if (userHand > 21)
+    handTotal += userHand[i].value;
+  }
+    if (handTotal > 21){ 
+      for(let i in userHand) {
+        if (userHand[i].value === 11){
+          handTotal -= 10;
+        }
+      }
+    } else {
+      bet = 0;
+      userHand = [];
+      dealerHand = [];
+    }
+      
     
 
   }
   
-}
+
 
 // Split.
 function split() {
