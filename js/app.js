@@ -10,6 +10,7 @@ let dealerHand = [];
 let playerChips = 0;
 let handTotal = 0;
 let bet = 0;
+let getElementById = 'dealer-talk'
 let insurance = false;
 
 
@@ -169,6 +170,9 @@ function openingHand(){
     dealerHand = [];
   }
   // Dealer informs player of hand total
+  // for(let i in userHand){
+  //   document.getElementById??  //********* DEALER TALK ********* - JW
+  // }
 }
 
 // Player wants a card.
@@ -202,7 +206,14 @@ function bet() {
 
 // Double.
 function double() {
+  let oneMoreCard = deck.pop();
+  userHand.push(oneMoreCard);
+  for(let i in userHand){
+    if (userHand > 21)
+    
 
+  }
+  
 }
 
 // Split.
