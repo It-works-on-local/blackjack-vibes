@@ -10,7 +10,7 @@ let dealerHand = [];
 let playerChips = 0;
 let handTotal = 0;
 let bet = 0;
-let getElementById = 'dealer-talk'
+let dealer = document.getElementById('dealer-talk');
 let insurance = false;
 
 
@@ -26,60 +26,58 @@ function Card (name, value){
 
 
 // ************ OBJECT INSTANTIATION ************
-new Card('ace-diamonds', 11);
-
 new Card('ace-spades', 11);
 new Card('ace-hearts', 11);
 new Card('ace-clubs', 11);
 new Card('ace-diamonds', 11);
-// new Card('two-spades', 2);
-// new Card('two-hearts', 2);
-// new Card('two-clubs', 2);
-// new Card('two-diamonds', 2);
-// new Card('three-spades', 3);
-// new Card('three-hearts', 3);
-// new Card('three-clubs', 3);
-// new Card('three-diamonds', 3);
-// new Card('four-spades', 4);
-// new Card('four-hearts', 4);
-// new Card('four-clubs', 4);
-// new Card('four-diamonds', 4);
-// new Card('five-spades', 5);
-// new Card('five-hearts', 5);
-// new Card('five-clubs', 5);
-// new Card('five-diamonds', 5);
-// new Card('six-spades', 6);
-// new Card('six-hearts', 6);
-// new Card('six-clubs', 6);
-// new Card('six-diamonds', 6);
-// new Card('seven-spades', 7);
-// new Card('seven-hearts', 7);
-// new Card('seven-clubs', 7);
-// new Card('seven-diamonds', 7);
-// new Card('eight-spades', 8);
-// new Card('eight-hearts', 8);
-// new Card('eight-clubs', 8);
-// new Card('eight-diamonds', 8);
-// new Card('nine-spades', 9);
-// new Card('nine-hearts', 9);
-// new Card('nine-clubs', 9);
-// new Card('nine-diamonds', 9);
-// new Card('ten-spades', 10);
-// new Card('ten-hearts', 10);
-// new Card('ten-clubs', 10);
-// new Card('ten-diamonds', 10);
-// new Card('jack-spades', 10);
-// new Card('jack-hearts', 10);
-// new Card('jack-clubs', 10);
-// new Card('jack-diamonds', 10);
-// new Card('queen-spades', 10);
-// new Card('queen-hearts', 10);
-// new Card('queen-clubs', 10);
-// new Card('queen-diamonds', 10);
-// new Card('king-spades', 10);
-// new Card('king-hearts', 10);
-// new Card('king-clubs', 10);
-// new Card('king-diamonds', 10);
+new Card('two-spades', 2);
+new Card('two-hearts', 2);
+new Card('two-clubs', 2);
+new Card('two-diamonds', 2);
+new Card('three-spades', 3);
+new Card('three-hearts', 3);
+new Card('three-clubs', 3);
+new Card('three-diamonds', 3);
+new Card('four-spades', 4);
+new Card('four-hearts', 4);
+new Card('four-clubs', 4);
+new Card('four-diamonds', 4);
+new Card('five-spades', 5);
+new Card('five-hearts', 5);
+new Card('five-clubs', 5);
+new Card('five-diamonds', 5);
+new Card('six-spades', 6);
+new Card('six-hearts', 6);
+new Card('six-clubs', 6);
+new Card('six-diamonds', 6);
+new Card('seven-spades', 7);
+new Card('seven-hearts', 7);
+new Card('seven-clubs', 7);
+new Card('seven-diamonds', 7);
+new Card('eight-spades', 8);
+new Card('eight-hearts', 8);
+new Card('eight-clubs', 8);
+new Card('eight-diamonds', 8);
+new Card('nine-spades', 9);
+new Card('nine-hearts', 9);
+new Card('nine-clubs', 9);
+new Card('nine-diamonds', 9);
+new Card('ten-spades', 10);
+new Card('ten-hearts', 10);
+new Card('ten-clubs', 10);
+new Card('ten-diamonds', 10);
+new Card('jack-spades', 10);
+new Card('jack-hearts', 10);
+new Card('jack-clubs', 10);
+new Card('jack-diamonds', 10);
+new Card('queen-spades', 10);
+new Card('queen-hearts', 10);
+new Card('queen-clubs', 10);
+new Card('queen-diamonds', 10);
+new Card('king-spades', 10);
+new Card('king-hearts', 10);
+new Card('king-clubs', 10);
+new Card('king-diamonds', 10);
 
 
 
@@ -106,13 +104,10 @@ function shuffle(){
           deck.push(cardList[index]);
         } else {
           index = Math.floor(Math.random() * cardList.length);
-
         }
       }
-
     }
   }
-
 }
 
 // Deals opening hand to dealer and user
@@ -130,6 +125,23 @@ function openingHand(){
 
   if(dealerHand[0].value === 11) {
     // Dealer asks players if they want insurance
+    talkbox('Would you like insurance?');
+    // DOM MANIPULATION - open a form to get player response
+    let insureForm = document.createElement('form');
+    dealer.appendChild(insureForm);
+    insureForm.setAttribute('id', 'insurance');
+    let insureFormField = document.createElement('fieldset');
+    insureForm.appendChild(insureFormField);
+    let yes = document.createElement('button');
+    yes.setAttribute('type', 'submit');
+    yes.textContent = 'Yes';
+    insureFormField.appendChild(yes);
+    // yes.addEventListener('submit', handleInsureYes);
+    let no = document.createElement('button');
+    no.setAttribute('type', 'submit');
+    no.textContent = 'No';
+    insureFormField.appendChild(no);
+    // no.addEventListener('submit', handleInsureNo);
 
     // Player has choice to risk .5 times their bet extra || if dealer has 21, player keeps bet, if not, lose insurance
     if(bet = 1) {// placeholder for if player takes insurance
@@ -146,9 +158,11 @@ function openingHand(){
       playerChips += bet;
       bet = 0;
       // Dealer informs player they have 21
+      talkbox('I have a blackjack, you can keep your bet.');
     } else{
       bet = 0;
       // Dealer informs player they have 21
+      talkbox('Unfortunately for you, I have a blackjack.');
       userHand = [];
       dealerHand = [];
     }
@@ -160,6 +174,7 @@ function openingHand(){
     return;
   }
 
+  handTotal = 0;
   for(let i in userHand) {
     handTotal+=userHand[i].value;
   }
@@ -167,10 +182,12 @@ function openingHand(){
     let payout = bet * 2.5;
     playerChips+=payout;
     // Dealer informs player the player has 21
+    talkbox('Congratulations, you have a blackjack!');
     userHand = [];
     dealerHand = [];
   }
   // Dealer informs player of hand total
+  talkbox(`Your current total is ${handTotal}`);
   // for(let i in userHand){
   //   document.getElementById??  //********* DEALER TALK ********* - JW
   // }
@@ -186,13 +203,13 @@ function hit(){
     handTotal += userHand[i].value;
   }
   if (handTotal > 21){
-    if (handTotal > 21){ 
+    if (handTotal > 21){
       let aces = 0;
       for(let i in userHand) {
         if (userHand[i].value === 11){
           aces ++;
           while(handTotal > 21 && aces > 0){
-          handTotal -= 10;
+            handTotal -= 10;
           }
         }
       }
@@ -214,17 +231,22 @@ function betting() {
 }
 
 // Double.
-function double() {
+function double() { // IN PROGRESS
   let oneMoreCard = deck.pop();
   userHand.push(oneMoreCard);
   handTotal = 0;
   for(let i in userHand){
     handTotal += userHand[i].value;
   }
-    if (handTotal > 21){ 
+  if (handTotal > 21){
+    if (handTotal > 21){
+      let aces = 0;
       for(let i in userHand) {
         if (userHand[i].value === 11){
-          handTotal -= 10;
+          aces ++;
+          while(handTotal > 21 && aces > 0){
+            handTotal -= 10;
+          }
         }
       }
     } else {
@@ -232,11 +254,9 @@ function double() {
       userHand = [];
       dealerHand = [];
     }
-      
-    
-
   }
-  
+}
+
 
 
 // Split.
@@ -251,11 +271,24 @@ function pass() {
 
 // If the dealer and the player both have cards under 22, check who wins!!
 
+// Replace dealer text
+function talkbox(statement) {
+  if(dealer.hasChildNodes()) {
+    dealer.removeChild(dealer.firstChild);
+  }
+  let dialogue = document.createElement('p');
+  dialogue.setAttribute('id', 'dialogue');
+  dialogue.textContent = statement;
+  dealer.appendChild(dialogue);
+}
+
+// ************ EVENT HANDLERS ************
+
+// handleInsureYes(event){
+//   event.preventDefault();
+// }
+
 // ************ TURN ORDER ************
 
 shuffle();
 openingHand();
-
-if(userHand.length > 0) {
-
-}
