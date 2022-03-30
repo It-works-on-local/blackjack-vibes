@@ -21,8 +21,8 @@ let insurance = false;
 function Card (name, value){
   this.name = name;
   this.value = value;
-  this.img = `../img/${name}.jpg`; // may need to change filetype
-
+  // this.img = `../img/${name}.jpg`; // may need to change filetype
+  this.img = `../img/danas-drawing.png`
   cardList.push(this);
 }
 
@@ -391,6 +391,10 @@ function handleHit(event){
   hit();
   if (deck.length > 10){
     turnOrder();
+
+    renderPlayer();
+
+
   }else {
     newRound();
   }
@@ -438,7 +442,7 @@ function newRound(){
 } 
 newRound();
 
-
+}
 
 // Create a function for the if statement in turn order.
 // inside each eventlistener we need to put the rest of the turn order items within the eventlistener
