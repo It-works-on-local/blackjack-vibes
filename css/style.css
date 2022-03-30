@@ -2,13 +2,17 @@ body {
   background-color: #006400;
 }
 
+a {
+  text-decoration: none;
+}
+
 h1 {
   font-family: 'Dancing Script', cursive;
   font-size: 6em;
   font-weight: bold;
   text-align: center;
   padding-top: 50px;
-  color: #eae0d5
+  color: #eae0d5;
 }
 
 h2 {
