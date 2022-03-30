@@ -41,7 +41,6 @@ div {
   width: 500px;
   height: 500px;
   position: relative;
-  font-size: ;
 }
 
 #top #middle {
@@ -62,6 +61,15 @@ div {
   height: 500px;
 }
 
+li {
+  padding: 10px;
+  text-align: center;
+}
+
+p {
+  margin-left: 5px;
+  margin-right: 5px;
+}
 
 #bottom {
   display: flex;
@@ -77,4 +85,8 @@ div {
   padding: 75px;
   width: 500px;
   height: 500px;
+}
+footer p {
+  font-size: 25px;
+  color: aqua;
 }

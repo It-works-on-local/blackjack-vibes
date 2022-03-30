@@ -27,7 +27,7 @@ nav ul {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  width: 70%;
+  width: 100%;
   margin-left: 150px;
 }
 
@@ -133,4 +133,28 @@ table, th, tr, td {
   top: -350px;
   width: 600px;
   height: 550px;
+}
+
+.split {
+  background-color: red;
+}
+
+.stand {
+  background-color: lightblue;
+}
+
+.hit {
+  background-color: yellow;
+}
+
+.double {
+  background-color: orange;
+}
+th {
+  background-color: white;
+}
+
+footer p {
+  font-size: 25px;
+  color: aqua;
 }
