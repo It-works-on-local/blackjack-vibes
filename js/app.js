@@ -21,7 +21,7 @@ let insurance = false;
 function Card (name, value){
   this.name = name;
   this.value = value;
-  this.img = `img/${name}.jpg`; // may need to change filetype
+  this.img = `../img/${name}.jpg`; // may need to change filetype
 
   cardList.push(this);
 }
@@ -92,6 +92,26 @@ new Card('king-diamonds', 10);
 
 // ************ HELPER FUNCTIONS ************
 
+// DOM manipulation for different player options.
+
+// 
+
+
+function turnOrder(){
+  
+  betting();
+  openingHand();
+  
+  if (userHand.length > 0) {
+    
+  renderOptions();
+  
+} else {
+  turnOrder();
+  }
+} 
+
+
 // Shuffle stack of cards.
 
 function shuffle(){
@@ -124,7 +144,7 @@ function openingHand(){  //Find a way to make this pause when asking the user fo
   userHand[1] = card;
   card = deck.pop();
   dealerHand[1] = card;
-
+  
   if(dealerHand[0].value === 11) {
     // Dealer asks players if they want insurance
     talkbox('Would you like insurance?');
@@ -143,15 +163,15 @@ function openingHand(){  //Find a way to make this pause when asking the user fo
     no.textContent = 'No';
     formField.appendChild(no);
     no.addEventListener('click', handleInsureNo);
-
+    
     // Player has choice to risk .5 times their bet extra || if dealer has 21, player keeps bet, if not, lose insurance
     
   }
-
+  
   for(let i in dealerHand) {
     handTotal+=dealerHand[i].value;
   }
-
+  
   if(handTotal === 21){
     if(insurance === true){
       playerChips += bet;
@@ -167,9 +187,9 @@ function openingHand(){  //Find a way to make this pause when asking the user fo
     }
     return;
   }
-
-
-
+  
+  
+  
   handTotal = 0;
   for(let i in userHand) {
     handTotal += userHand[i].value;
@@ -198,9 +218,9 @@ function hit(){
     handTotal += userHand[i].value;
   }
   if (handTotal > 21){
-      let aces = 0;
-      for(let i in userHand) {
-        if (userHand[i].value === 11){
+    let aces = 0;
+    for(let i in userHand) {
+      if (userHand[i].value === 11){
           aces ++;
           while(handTotal > 21 && aces > 0){
             handTotal -= 10;
@@ -212,13 +232,13 @@ function hit(){
         userHand = [];
         dealerHand = [];
         talkbox(`Sorry, your total is too high.`)
-
+        
       }else{
         talkbox(`Your total is ${handTotal}`)
       }
-
-
-  } else {
+      
+      
+    } else {
       talkbox(`Your total is ${handTotal}`)
     }
 }
@@ -226,7 +246,7 @@ function hit(){
 // Player bet.
 function betting() {
   // Add money to bet based on form input in gameroom.html
-
+  
   // Remove money from playerChips equal to the amount bet
 }
 
@@ -261,12 +281,12 @@ function double() { // IN PROGRESS
 
 // Split.
 function split() {
-
+  
 }
 
 // Pass/Dealer takes over.
 function pass() {
-
+  
 }
 
 // If the dealer and the player both have cards under 22, check who wins!!
@@ -282,46 +302,72 @@ function talkbox(statement) {
   dealer.appendChild(dialogue);
 }
 
-// function formDelay(){
-//   if(userHand.length > 0){
-//     setTimeout(function(){
-//       dealer.appendChild(form);
-//       form.setAttribute('id', 'insurance');
-//       let formField = document.createElement('fieldset');
-//       form.appendChild(formField);
-    
-//       let hit = document.createElement('button');
-//       hit.setAttribute('type', 'submit');
-//       hit.textContent = 'hit';
-//       formField.appendChild(hit);
-//       hit.addEventListener('click', handleHit);
-    
-//       let double = document.createElement('button');
-//       double.setAttribute('type', 'submit');
-//       double.textContent = 'double';
-//       formField.appendChild(double);
-//       double.addEventListener('click', handleDouble);
-    
-//       let split = document.createElement('button');
-//       split.setAttribute('type', 'submit');
-//       split.textContent = 'split';
-//       formField.appendChild(split);
-//       split.addEventListener('click', handleSplit);
-    
-//       let stand = document.createElement('button');
-//       stand.setAttribute('type', 'submit');
-//       stand.textContent = 'stand';
-//       formField.appendChild(stand);
-//       stand.addEventListener('click', handleStand);
+// ************ DOM MANIPULATION FOR DEALER & USER CARDS ************
 
-//       formDelay();
-//     }, 10000000);
-//   }
-// }
+
+// Any time the player or dealer gets a new card, re-render their hand. run through user/dealer hand to append images to match the 'container' names.  
+function renderOptions(){
+  
+  dealer.appendChild(form);
+  form.setAttribute('id', 'insurance');
+  let formField = document.createElement('fieldset');
+  form.appendChild(formField);
+    
+  let hit = document.createElement('button');
+  hit.setAttribute('type', 'submit');
+  hit.textContent = 'hit';
+  formField.appendChild(hit);
+  hit.addEventListener('click', handleHit);
+    
+  let double = document.createElement('button');
+  double.setAttribute('type', 'submit');
+  double.textContent = 'double';
+  formField.appendChild(double);
+  double.addEventListener('click', handleDouble);
+    
+  let split = document.createElement('button');
+  split.setAttribute('type', 'submit');
+  split.textContent = 'split';
+  formField.appendChild(split);
+  split.addEventListener('click', handleSplit);
+    
+  let stand = document.createElement('button');
+  stand.setAttribute('type', 'submit');
+  stand.textContent = 'stand';
+  formField.appendChild(stand);
+  stand.addEventListener('click', handleStand);
+
+}
+
+function renderDealer (){
+  for(let i in dealerHand){
+    // dealerHand[i].img;
+    
+    let bjvImg = document.createElement('img');
+    bjvImg.src = dealerHand[i].img;
+    let dealerContainer = document.getElementById('dealer-container');
+    dealerContainer.appendChild(bjvImg); 
+
+    if(dealerHand.hasChildNodes()) {
+      dealer.removeChild(dealer.firstChild); // left off here before lunch....Jw
+  }
+}
+
+
+function renderPlayer (){
+  for(let i in userHand){
+
+    let bjvImg = document.createElement('img');
+    bjvImg.src = dealerHand[i].img;
+    let playerContainer = document.getElementById('player-container');
+    playerContainer.appendChild(bjvImg); 
+  }
+}
 
 
 
 // ************ EVENT HANDLERS ************
+
 
 function handleInsureYes(event){
   event.preventDefault();
@@ -343,75 +389,55 @@ function handleHit(event){
   event.preventDefault();
 
   hit();
+  if (deck.length > 10){
+    turnOrder();
+  }else {
+    newRound();
+  }
 }
 
 function handleDouble(event){
   event.preventDefault();
 
   double();
+  if (deck.length > 10){
+    turnOrder();
+  }else {
+    newRound();
+  }
 }
 
 function handleSplit(event){
   event.preventDefault();
 
   split();
+  if (deck.length > 10){
+    turnOrder();
+  }else {
+    newRound();
+  }
 }
 
 function handleStand(event){
   event.preventDefault();
 
   stand();
+  if (deck.length > 10){
+    turnOrder();
+  }else {
+    newRound();
+  }
 }
 
 
-// ************ TURN ORDER ************
+// ************ TURN ORDER ***********
 
-// while(playerChips > 0){ 
-
+function newRound(){
   shuffle();
-  while(deck.length > 10){
-    
-    // formDelay();
-    betting();
-    openingHand();
+  turnOrder();
+} 
+newRound();
 
-    
-    if (userHand.length > 0) {
-      dealer.appendChild(form);
-      form.setAttribute('id', 'insurance');
-      let formField = document.createElement('fieldset');
-      form.appendChild(formField);
-    
-      let hit = document.createElement('button');
-      hit.setAttribute('type', 'submit');
-      hit.textContent = 'hit';
-      formField.appendChild(hit);
-      hit.addEventListener('click', handleHit);
-    
-      let double = document.createElement('button');
-      double.setAttribute('type', 'submit');
-      double.textContent = 'double';
-      formField.appendChild(double);
-      double.addEventListener('click', handleDouble);
-    
-      let split = document.createElement('button');
-      split.setAttribute('type', 'submit');
-      split.textContent = 'split';
-      formField.appendChild(split);
-      split.addEventListener('click', handleSplit);
-    
-      let stand = document.createElement('button');
-      stand.setAttribute('type', 'submit');
-      stand.textContent = 'stand';
-      formField.appendChild(stand);
-      stand.addEventListener('click', handleStand);
-
-      
-
-  
-    }
-  }
-// }
 
 
 // Create a function for the if statement in turn order.
