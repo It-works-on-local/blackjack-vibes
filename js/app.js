@@ -11,7 +11,9 @@ let playerChips = 0;
 let handTotal = 0;
 let bet = 0;
 let dealer = document.getElementById('dealer-talk');
+let form = document.createElement('form');
 let insurance = false;
+
 
 
 // ************ CONSTRUCTOR FUNCTIONS ************
@@ -112,7 +114,7 @@ function shuffle(){
 
 // Deals opening hand to dealer and user
 
-function openingHand(){
+function openingHand(){  //Find a way to make this pause when asking the user for insurance.
   let handTotal = 0;
   let card = deck.pop();
   userHand[0] = card;
@@ -127,26 +129,23 @@ function openingHand(){
     // Dealer asks players if they want insurance
     talkbox('Would you like insurance?');
     // DOM MANIPULATION - open a form to get player response
-    let insureForm = document.createElement('form');
-    dealer.appendChild(insureForm);
-    insureForm.setAttribute('id', 'insurance');
-    let insureFormField = document.createElement('fieldset');
-    insureForm.appendChild(insureFormField);
+    dealer.appendChild(form);
+    form.setAttribute('id', 'insurance');
+    let formField = document.createElement('fieldset');
+    form.appendChild(formField);
     let yes = document.createElement('button');
     yes.setAttribute('type', 'submit');
     yes.textContent = 'Yes';
-    insureFormField.appendChild(yes);
-    // yes.addEventListener('submit', handleInsureYes);
+    formField.appendChild(yes);
+    yes.addEventListener('click', handleInsureYes);
     let no = document.createElement('button');
     no.setAttribute('type', 'submit');
     no.textContent = 'No';
-    insureFormField.appendChild(no);
-    // no.addEventListener('submit', handleInsureNo);
+    formField.appendChild(no);
+    no.addEventListener('click', handleInsureNo);
 
     // Player has choice to risk .5 times their bet extra || if dealer has 21, player keeps bet, if not, lose insurance
-    if(bet = 1) {// placeholder for if player takes insurance
-      insurance = true;
-    }
+    
   }
 
   for(let i in dealerHand) {
@@ -169,28 +168,24 @@ function openingHand(){
     return;
   }
 
-  if(insurance === true) {
-    bet = 0;
-    return;
-  }
+
 
   handTotal = 0;
   for(let i in userHand) {
-    handTotal+=userHand[i].value;
+    handTotal += userHand[i].value;
   }
   if(handTotal === 21){
     let payout = bet * 2.5;
-    playerChips+=payout;
+    playerChips += payout;
     // Dealer informs player the player has 21
     talkbox('Congratulations, you have a blackjack!');
     userHand = [];
     dealerHand = [];
+  } else{
+    // Dealer informs player of hand total
+    talkbox(`Your current total is ${handTotal}`);
   }
-  // Dealer informs player of hand total
-  talkbox(`Your current total is ${handTotal}`);
-  // for(let i in userHand){
-  //   document.getElementById??  //********* DEALER TALK ********* - JW
-  // }
+  
 }
 
 // Player wants a card.
@@ -203,7 +198,6 @@ function hit(){
     handTotal += userHand[i].value;
   }
   if (handTotal > 21){
-    if (handTotal > 21){
       let aces = 0;
       for(let i in userHand) {
         if (userHand[i].value === 11){
@@ -213,14 +207,20 @@ function hit(){
           }
         }
       }
-    } else {
-      bet = 0;
-      userHand = [];
-      dealerHand = [];
-    }
+      if (handTotal > 21){
+        bet = 0;
+        userHand = [];
+        dealerHand = [];
+        talkbox(`Sorry, your total is too high.`)
+
+      }else{
+        talkbox(`Your total is ${handTotal}`)
+      }
+
+
   } else {
-  // Dealer informs player of what their hand total is.
-  }
+      talkbox(`Your total is ${handTotal}`)
+    }
 }
 
 // Player bet.
@@ -282,13 +282,138 @@ function talkbox(statement) {
   dealer.appendChild(dialogue);
 }
 
+// function formDelay(){
+//   if(userHand.length > 0){
+//     setTimeout(function(){
+//       dealer.appendChild(form);
+//       form.setAttribute('id', 'insurance');
+//       let formField = document.createElement('fieldset');
+//       form.appendChild(formField);
+    
+//       let hit = document.createElement('button');
+//       hit.setAttribute('type', 'submit');
+//       hit.textContent = 'hit';
+//       formField.appendChild(hit);
+//       hit.addEventListener('click', handleHit);
+    
+//       let double = document.createElement('button');
+//       double.setAttribute('type', 'submit');
+//       double.textContent = 'double';
+//       formField.appendChild(double);
+//       double.addEventListener('click', handleDouble);
+    
+//       let split = document.createElement('button');
+//       split.setAttribute('type', 'submit');
+//       split.textContent = 'split';
+//       formField.appendChild(split);
+//       split.addEventListener('click', handleSplit);
+    
+//       let stand = document.createElement('button');
+//       stand.setAttribute('type', 'submit');
+//       stand.textContent = 'stand';
+//       formField.appendChild(stand);
+//       stand.addEventListener('click', handleStand);
+
+//       formDelay();
+//     }, 10000000);
+//   }
+// }
+
+
+
 // ************ EVENT HANDLERS ************
 
-// handleInsureYes(event){
-//   event.preventDefault();
-// }
+function handleInsureYes(event){
+  event.preventDefault();
+  insurance = true;
+
+  let insuredBet = bet * 0.5;
+  playerChips -= insuredBet;
+  bet += insuredBet; 
+  form.removeChild(form.firstChild);
+}
+
+function handleInsureNo(event){
+  event.preventDefault();
+  insurance = false;
+  form.removeChild(form.firstChild);
+}
+
+function handleHit(event){
+  event.preventDefault();
+
+  hit();
+}
+
+function handleDouble(event){
+  event.preventDefault();
+
+  double();
+}
+
+function handleSplit(event){
+  event.preventDefault();
+
+  split();
+}
+
+function handleStand(event){
+  event.preventDefault();
+
+  stand();
+}
+
 
 // ************ TURN ORDER ************
 
-shuffle();
-openingHand();
+// while(playerChips > 0){ 
+
+  shuffle();
+  while(deck.length > 10){
+    
+    // formDelay();
+    betting();
+    openingHand();
+
+    
+    if (userHand.length > 0) {
+      dealer.appendChild(form);
+      form.setAttribute('id', 'insurance');
+      let formField = document.createElement('fieldset');
+      form.appendChild(formField);
+    
+      let hit = document.createElement('button');
+      hit.setAttribute('type', 'submit');
+      hit.textContent = 'hit';
+      formField.appendChild(hit);
+      hit.addEventListener('click', handleHit);
+    
+      let double = document.createElement('button');
+      double.setAttribute('type', 'submit');
+      double.textContent = 'double';
+      formField.appendChild(double);
+      double.addEventListener('click', handleDouble);
+    
+      let split = document.createElement('button');
+      split.setAttribute('type', 'submit');
+      split.textContent = 'split';
+      formField.appendChild(split);
+      split.addEventListener('click', handleSplit);
+    
+      let stand = document.createElement('button');
+      stand.setAttribute('type', 'submit');
+      stand.textContent = 'stand';
+      formField.appendChild(stand);
+      stand.addEventListener('click', handleStand);
+
+      
+
+  
+    }
+  }
+// }
+
+
+// Create a function for the if statement in turn order.
+// inside each eventlistener we need to put the rest of the turn order items within the eventlistener
+// the eventlisteners changes the data... NO WHILE LOOPPPPP. 
