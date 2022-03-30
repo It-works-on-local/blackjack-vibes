@@ -22,7 +22,7 @@ function Card (name, value){
   this.name = name;
   this.value = value;
   // this.img = `../img/${name}.jpg`; // may need to change filetype
-  this.img = `../img/danas-drawing.png`
+  this.img = `../img/${name}.jpg`;
   cardList.push(this);
 }
 
@@ -94,29 +94,29 @@ new Card('king-diamonds', 10);
 
 // DOM manipulation for different player options.
 
-// 
+//
 
 
 function turnOrder(){
-  
+
   betting();
   openingHand();
-  
+
   if (userHand.length > 0) {
-    
-  renderOptions();
-  
-} else {
-  turnOrder();
+
+    renderOptions();
+
+  } else {
+    turnOrder();
   }
-} 
+}
 
 
 // Shuffle stack of cards.
 
 function shuffle(){
   deck = [];
-  for(let i in cardList){
+  for(let i = 0; i < cardList.length; i++){
     let index = Math.floor(Math.random() * cardList.length);
     if (!deck.includes(index)){
       deck.push(cardList[index]);
@@ -134,7 +134,7 @@ function shuffle(){
 
 // Deals opening hand to dealer and user
 
-function openingHand(){  //Find a way to make this pause when asking the user for insurance.
+function openingHand(){ //Find a way to make this pause when asking the user for insurance.
   let handTotal = 0;
   let card = deck.pop();
   userHand[0] = card;
@@ -144,7 +144,9 @@ function openingHand(){  //Find a way to make this pause when asking the user fo
   userHand[1] = card;
   card = deck.pop();
   dealerHand[1] = card;
-  
+  renderDealer();
+  renderPlayer();
+
   if(dealerHand[0].value === 11) {
     // Dealer asks players if they want insurance
     talkbox('Would you like insurance?');
@@ -163,21 +165,25 @@ function openingHand(){  //Find a way to make this pause when asking the user fo
     no.textContent = 'No';
     formField.appendChild(no);
     no.addEventListener('click', handleInsureNo);
-    
+
     // Player has choice to risk .5 times their bet extra || if dealer has 21, player keeps bet, if not, lose insurance
-    
+
   }
-  
+
   for(let i in dealerHand) {
     handTotal+=dealerHand[i].value;
   }
-  
+
   if(handTotal === 21){
     if(insurance === true){
       playerChips += bet;
       bet = 0;
       // Dealer informs player they have 21
       talkbox('I have a blackjack, you can keep your bet.');
+      userHand = [];
+      renderPlayer();
+      dealerHand = [];
+      renderDealer();
     } else{
       bet = 0;
       // Dealer informs player they have 21
@@ -187,9 +193,9 @@ function openingHand(){  //Find a way to make this pause when asking the user fo
     }
     return;
   }
-  
-  
-  
+
+
+
   handTotal = 0;
   for(let i in userHand) {
     handTotal += userHand[i].value;
@@ -205,7 +211,6 @@ function openingHand(){  //Find a way to make this pause when asking the user fo
     // Dealer informs player of hand total
     talkbox(`Your current total is ${handTotal}`);
   }
-  
 }
 
 // Player wants a card.
@@ -213,6 +218,7 @@ function openingHand(){  //Find a way to make this pause when asking the user fo
 function hit(){
   let card = deck.pop();
   userHand.push(card);
+  renderPlayer();
   let handTotal = 0;
   for(let i in userHand){
     handTotal += userHand[i].value;
@@ -221,32 +227,33 @@ function hit(){
     let aces = 0;
     for(let i in userHand) {
       if (userHand[i].value === 11){
-          aces ++;
-          while(handTotal > 21 && aces > 0){
-            handTotal -= 10;
-          }
+        aces ++;
+        while(handTotal > 21 && aces > 0){
+          handTotal -= 10;
         }
       }
-      if (handTotal > 21){
-        bet = 0;
-        userHand = [];
-        dealerHand = [];
-        talkbox(`Sorry, your total is too high.`)
-        
-      }else{
-        talkbox(`Your total is ${handTotal}`)
-      }
-      
-      
-    } else {
-      talkbox(`Your total is ${handTotal}`)
     }
+    if (handTotal > 21){
+      bet = 0;
+      userHand = [];
+      renderPlayer();
+      dealerHand = [];
+      renderDealer();
+      talkbox('Sorry, your total is too high.');
+    }else{
+      talkbox(`Your total is ${handTotal}`);
+    }
+
+
+  } else {
+    talkbox(`Your total is ${handTotal}`);
+  }
 }
 
 // Player bet.
 function betting() {
   // Add money to bet based on form input in gameroom.html
-  
+
   // Remove money from playerChips equal to the amount bet
 }
 
@@ -281,12 +288,12 @@ function double() { // IN PROGRESS
 
 // Split.
 function split() {
-  
+
 }
 
 // Pass/Dealer takes over.
 function pass() {
-  
+
 }
 
 // If the dealer and the player both have cards under 22, check who wins!!
@@ -305,66 +312,71 @@ function talkbox(statement) {
 // ************ DOM MANIPULATION FOR DEALER & USER CARDS ************
 
 
-// Any time the player or dealer gets a new card, re-render their hand. run through user/dealer hand to append images to match the 'container' names.  
+// Any time the player or dealer gets a new card, re-render their hand. run through user/dealer hand to append images to match the 'container' names.
 function renderOptions(){
-  
+
   dealer.appendChild(form);
   form.setAttribute('id', 'insurance');
   let formField = document.createElement('fieldset');
   form.appendChild(formField);
-    
+
   let hit = document.createElement('button');
   hit.setAttribute('type', 'submit');
   hit.textContent = 'hit';
   formField.appendChild(hit);
   hit.addEventListener('click', handleHit);
-    
+
   let double = document.createElement('button');
   double.setAttribute('type', 'submit');
   double.textContent = 'double';
   formField.appendChild(double);
   double.addEventListener('click', handleDouble);
-    
+
   let split = document.createElement('button');
   split.setAttribute('type', 'submit');
   split.textContent = 'split';
   formField.appendChild(split);
   split.addEventListener('click', handleSplit);
-    
+
   let stand = document.createElement('button');
   stand.setAttribute('type', 'submit');
   stand.textContent = 'stand';
   formField.appendChild(stand);
   stand.addEventListener('click', handleStand);
-
 }
 
 function renderDealer (){
+  let dealerContainer = document.getElementById('dealer-container');
+
+  if(dealerContainer.hasChildNodes()) {
+    dealerContainer.removeChild(dealerContainer.firstChild); // left off here before lunch....Jw
+  }
+
   for(let i in dealerHand){
-    // dealerHand[i].img;
-    
+
     let bjvImg = document.createElement('img');
     bjvImg.src = dealerHand[i].img;
-    let dealerContainer = document.getElementById('dealer-container');
-    dealerContainer.appendChild(bjvImg); 
+    bjvImg.alt = dealerHand[i].name;
+    dealerContainer.appendChild(bjvImg);
 
-    if(dealerHand.hasChildNodes()) {
-      dealer.removeChild(dealer.firstChild); // left off here before lunch....Jw
   }
 }
 
+function renderPlayer(){
+  let playerContainer = document.getElementById('player-container');
 
-function renderPlayer (){
+  if(playerContainer.hasChildNodes()) {
+    playerContainer.removeChild(playerContainer.firstChild); // left off here before lunch....Jw
+  }
+
   for(let i in userHand){
-
     let bjvImg = document.createElement('img');
-    bjvImg.src = dealerHand[i].img;
-    let playerContainer = document.getElementById('player-container');
-    playerContainer.appendChild(bjvImg); 
+    bjvImg.src = userHand[i].img;
+    bjvImg.alt = userHand[i].name;
+    playerContainer.appendChild(bjvImg);
+
   }
 }
-
-
 
 // ************ EVENT HANDLERS ************
 
@@ -391,11 +403,7 @@ function handleHit(event){
   hit();
   if (deck.length > 10){
     turnOrder();
-
-    renderPlayer();
-
-
-  }else {
+  } else {
     newRound();
   }
 }
@@ -434,16 +442,15 @@ function handleStand(event){
 }
 
 
+
+
 // ************ TURN ORDER ***********
 
 function newRound(){
   shuffle();
   turnOrder();
-} 
+}
 newRound();
 
-}
 
-// Create a function for the if statement in turn order.
-// inside each eventlistener we need to put the rest of the turn order items within the eventlistener
-// the eventlisteners changes the data... NO WHILE LOOPPPPP.
+
