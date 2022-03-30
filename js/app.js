@@ -442,4 +442,4 @@ newRound();
 
 // Create a function for the if statement in turn order.
 // inside each eventlistener we need to put the rest of the turn order items within the eventlistener
-// the eventlisteners changes the data... NO WHILE LOOPPPPP. 
+// the eventlisteners changes the data... NO WHILE LOOPPPPP.
