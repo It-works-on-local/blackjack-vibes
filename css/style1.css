@@ -66,7 +66,7 @@ nav li {
   background-color: #004b23;
   position: relative;
   width: 1200px;
-  height: 800px;
+  height: 900px;
   padding: 20px;
   margin-top: 50px;
   margin-left: 50px;
@@ -100,34 +100,55 @@ nav li {
   font-size: 1.8em;
 }
 
-#dealer img {
+img {
   width: 120px;
   height: 180px;
+  padding-right: 10px;
 }
 
-#betinput {
-  font-size: 1.5em;
+#dealer-talk {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 20px;
   color: white;
+  font-size: 2em;
+  font-family: monospace;
+}
+
+#betandchip {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  font-size: 1.5em;
+  font-family: monospace;
+  color: white;
+  padding: 10px;
 }
 
 input[type="number"] {
   width: 100px;
 }
 
-#dealer-talk {
+#gamebuttons {
+  padding-left: 200px;
+}
+
+#chip {
+  padding-left: 300px;
+}
+
+/* #talkbox {
+  font-size: 1em;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  padding: 10px;
-}
-
-#talkbox {
-  font-size: 1.5em;
+  justify-content: center;
   color: white;
   width: 300px;  
-}
+} */
 
 #player {
+  position: relative;
   background-color:#004b23;
   border: 2px solid white;
   padding-top: 20px;
