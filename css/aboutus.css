@@ -6,7 +6,6 @@ a {
   text-decoration: none;
   color: #cbdfbd;
 }
-p
 
 #header {
   display: flex;
@@ -46,25 +45,16 @@ nav {
   margin-top: 20px;
 }
 
-nav li {
-  font-size:2.5em;
-  font-weight: 700;
-  padding: 20px 100px
-}
-
 nav ul {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
 
-h2 {
-  font-family: 'Libre Baskerville', serif;
-  font-size: 1.5em;
-  text-align: center;
-  padding-top: 30px;
-  padding-bottom: 0px;
-  color: #cbdfbd;
+nav li {
+  font-size:2.5em;
+  font-weight: 700;
+  padding: 20px 100px
 }
 
 div {
@@ -75,32 +65,28 @@ div {
   justify-content: center;
 }
 
-/******************** Bottom Divs *********************/
-
-#bottom #right ul {
-  text-align: center;
-  padding-top: 60px;
+div p {
+  color: #cbdfbd;
+  border: solid;
+  justify-content: center;
 }
 
-li {
-  font-size: 1.5em;
-  padding: 30px 20px;
+#bottom #right a {
+  color: white;
 }
-
 
 footer {
   background-color: #015701;
   color: rgb(213, 219, 213);
   text-align: center;
-  position: relative;
+  position: fixed;
   bottom: 0;
   width: 100%;
-  height: 120px;
-  margin-top: 80px;
+  height: 100px;
 }
 
 footer p {
-  font-size: 25px;
+  font-size: 30px;
   padding-top: 20px;
   padding-bottom: 25px;
   padding-left: 15px;
@@ -108,5 +94,5 @@ footer p {
 
 footer li {
   display: inline;
-  padding-left: 20px;
+  padding-left: 55px;
 }
