@@ -271,7 +271,7 @@ function betting() {
 }
 
 // Double.
-function double() { // IN PROGRESS
+function double() {
   let doubleBet = Math.floor(bet * 0.5);
   bet += doubleBet;
   playerChips -= doubleBet;
@@ -282,6 +282,7 @@ function double() { // IN PROGRESS
   for(let i in userHand){
     handTotal += userHand[i].value;
   }
+  talkbox(`Your current total is ${handTotal}`);
   if (handTotal > 21){
     if (handTotal > 21){
       let aces = 0;
@@ -295,8 +296,10 @@ function double() { // IN PROGRESS
       }
       if(deck.length > 10) {
         betting();
+        return;
       } else {
         newRound();
+        return;
       }
     } else {
       bet = 0;
@@ -304,10 +307,15 @@ function double() { // IN PROGRESS
       dealerHand = [];
       if(deck.length > 10) {
         betting();
+        return;
       } else {
         newRound();
+        return;
       }
     }
+  } else {
+    stand();
+    return;
   }
 }
 
@@ -324,12 +332,79 @@ function stand() {
   for(let i in dealerHand) {
     handTotal += dealerHand[i].value;
   }
-  while(handTotal < 21) {
-    let newCard = deck.pop();
-    dealerHand.push(newCard);
-    handTotal += dealerHand[dealerHand.length - 1];
+  setTimeout(() => {
+    while(handTotal < 17) {
+      let newCard = deck.pop();
+      dealerHand.push(newCard);
+      renderDealer();
+      handTotal = 0;
+      handTotal += dealerHand[dealerHand.length - 1];
+      if(handTotal > 21){
+        let aces = 0;
+        for(let i in dealerHand) {
+          if (dealerHand[i].value === 11){
+            aces ++;
+            while(handTotal > 21 && aces > 0){
+              handTotal -= 10;
+            }
+          }
+        }
+        if(handTotal > 21) {
+          talkbox('Looks like you win.');
+          userHand = [];
+          renderPlayer();
+          dealerHand = [];
+          renderDealer();
+          playerChips += bet;
+          bet = 0;
+          if(deck.length > 10) {
+            betting();
+            return;
+          } else {
+            newRound();
+            return;
+          }
+        }
+      }
+    }
+  }, 2*1000);
+  let dealerTotal = handTotal;
+  handTotal = 0;
+  for(let i in userHand) {
+    handTotal += userHand[i];
+  }
+  if(handTotal > dealerTotal) {
+    talkbox('Looks like you win.');
+    userHand = [];
+    renderPlayer();
+    dealerHand = [];
+    renderDealer();
+    playerChips += bet;
+    bet = 0;
+    if(deck.length > 10) {
+      betting();
+      return;
+    } else {
+      newRound();
+      return;
+    }
+  } else {
+    talkbox('Better luck next time.');
+    userHand = [];
+    renderPlayer();
+    dealerHand = [];
+    renderDealer();
+    bet = 0;
+    if(deck.length > 10) {
+      betting();
+      return;
+    } else {
+      newRound();
+      return;
+    }
   }
 }
+
 
 // If the dealer and the player both have cards under 22, check who wins!!
 
