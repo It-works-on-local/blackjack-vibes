@@ -60,86 +60,27 @@ nav li {
   padding: 20px 100px
 }
 
-/* nav {
-  background-color: rgb(188, 212, 78);
-  align-content: center;
-  margin-bottom: 30px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-nav ul {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  width: 100%;
-  margin-left: 20px;
-}
-
-nav #main {
-  font-family: 'Libre Baskerville', serif;
-  font-size: 4em;
-  font-weight: 900;
-  margin-left: 40px;
-}
-
-nav #home {
-  padding-top: 70px;
-  padding-bottom: 20px;
-  font-family: monospace;
-  font-size: 3em;
-}
-
-nav #cheatsheet {
-  padding-top: 70px;
-  padding-bottom: 20px;
-  font-family: monospace;
-  font-size: 3em;
-}
-
-nav #gameroom {
-  padding-top: 70px;
-  padding-bottom: 20px;
-  font-family: monospace;
-  font-size: 3em;
-} */
-
-h2 {
-  font-family: 'Libre Baskerville', serif;
-  font-size: 2em;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  text-align: center;
-}
-
-h3 {
-  font-family: 'Libre Baskerville', serif;
-  font-weight: bolder;
-  font-size: 1.7em;
-  color: white;
-}
-
 /* ************* Game Room **************/
 
 #gametable {
   background-color: #004b23;
   position: relative;
   width: 1200px;
-  height: 900px;
-  margin-top: 100px;
-  margin-left: 100px;
+  height: 800px;
+  padding: 20px;
+  margin-top: 50px;
+  margin-left: 50px;
+  margin-bottom: 50px;
   border: 3px solid white;
 }
 
 #gametable h2 {
   font-family: 'Libre Baskerville', serif;
   font-weight: bolder;
-  font-size: 3.5em;
+  font-size: 3em;
   color: white;
+  text-align: center;
+  padding: 15px 0px;
 }
 
 #dealer {
@@ -148,10 +89,14 @@ h3 {
   padding-top: 20px;
   padding-left: 50px;
   padding-bottom: 20px;
+  margin-bottom: 20px;
+  height: 250px;
 }
 
 #dealer h3 {
   padding-bottom: 20px;
+  color: white;
+  font-size: 1.8em;
 }
 
 #dealer img {
@@ -159,13 +104,33 @@ h3 {
   height: 180px;
 }
 
+#betinput {
+  color: white;
+}
+
+#player {
+  background-color:#004b23;
+  border: 2px solid white;
+  padding-top: 20px;
+  padding-left: 50px;
+  padding-bottom: 20px;
+  margin-top: 20px;
+  height: 250px;
+}
+
+#player h3 {
+  padding-bottom: 20px;
+  color: white;
+  font-size: 1.8em;
+}
+
 #musicplayer {
   color: white;
   position: relative;
   width: 400px;
   height: 400px;
-  margin-left: 1400px;
-  top: -900px;
+  margin-left: 1300px;
+  top: -600px;
   border: 2px solid white;
 }
 
@@ -177,14 +142,6 @@ h3 {
 
 
 /* ************* cheatsheet page ************** */
-
-/* div {
-  width: 300px;
-  height: 300px;
-  background-color: #adc178;
-  border: 5px solid #004b23;
-  margin: 40px;
-} */
 
 #key {
   margin-left: 450px;
