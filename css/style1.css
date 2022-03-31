@@ -1,17 +1,66 @@
 /* css for gameroom and cheatsheet */
 
 body {
-  background-color: #006400;
+  background-color: #004b23;
 }
 
-h2 {
+a {
+  text-decoration: none;
+  color: #cbdfbd;
+}
+
+
+#header {
+  background-color: #015701;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+h1 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 4em;
+  font-weight: bold;
+  color: #cbdfbd;
   text-align: center;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  font-size: 1.5em;
+  padding: 30px 20px;
 }
 
 nav {
+  background-color: #006600;
+  color: #cbdfbd;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#spades {
+  height: 70px;
+  width: 50px;
+  position: relative;
+  margin-top: 20px;
+}
+
+#hearts {
+  height: 70px;
+  width: 50px;
+  position: relative;
+  margin-top: 20px;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+nav li {
+  font-size:2.5em;
+  font-weight: 700;
+  padding: 20px 100px
+}
+
+/* nav {
   background-color: rgb(188, 212, 78);
   align-content: center;
   margin-bottom: 30px;
@@ -28,13 +77,13 @@ nav ul {
   flex-direction: row;
   justify-content: space-evenly;
   width: 100%;
-  margin-left: 150px;
+  margin-left: 20px;
 }
 
 nav #main {
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Libre Baskerville', serif;
   font-size: 4em;
-  font-weight: bold;
+  font-weight: 900;
   margin-left: 40px;
 }
 
@@ -57,27 +106,67 @@ nav #gameroom {
   padding-bottom: 20px;
   font-family: monospace;
   font-size: 3em;
+} */
+
+h2 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 2em;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: center;
 }
 
-a {
-  text-decoration: none;
+h3 {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: bolder;
+  font-size: 1.7em;
+  color: white;
 }
 
-/* ------------- Gameroom page --------------*/
+/* ************* Game Room **************/
 
 #gametable {
+  background-color: #004b23;
   position: relative;
   width: 1200px;
-  height: 800px;
+  height: 900px;
+  margin-top: 100px;
   margin-left: 100px;
+  border: 3px solid white;
+}
+
+#gametable h2 {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: bolder;
+  font-size: 3.5em;
+  color: white;
+}
+
+#dealer {
+  background-color: #004b23;
+  border: 2px solid white;
+  padding-top: 20px;
+  padding-left: 50px;
+  padding-bottom: 20px;
+}
+
+#dealer h3 {
+  padding-bottom: 20px;
+}
+
+#dealer img {
+  width: 120px;
+  height: 180px;
 }
 
 #musicplayer {
+  color: white;
   position: relative;
   width: 400px;
   height: 400px;
   margin-left: 1400px;
-  top: -850px;
+  top: -900px;
+  border: 2px solid white;
 }
 
 #musicplayer iframe {
@@ -86,23 +175,43 @@ a {
   padding-top: 10px;
 }
 
-/* ------------- cheatsheet page -------------*/
 
-div {
+/* ************* cheatsheet page ************** */
+
+/* div {
   width: 300px;
   height: 300px;
   background-color: #adc178;
   border: 5px solid #004b23;
   margin: 40px;
-}
+} */
 
 #key {
-  margin-left: 400px;
+  margin-left: 450px;
   margin-top: 100px;
+  width: 300px;
+  height: 300px;
+  border: 2px solid white;
+}
+
+#key h2 {
+  font-family: 'Libre Baskerville', serif;
+  color: white;
+}
+
+#key ul {
+  margin-left: 85px;
+  padding-top: 5px;
+}
+
+#key li {
+  padding: 7px;
+  font-size: 1.5em;
+  width: 53%;
 }
 
 table, th, tr, td {
-  border: 1px solid;
+  border: 2px solid;
   text-align: center;
   padding: 10px;
   margin-left: auto;
@@ -114,11 +223,16 @@ table, th, tr, td {
   margin-left: 800px;
 }
 
+#boxes h2 {
+  color: white;
+}
+
 #div1 {
   position: relative;
   top: -350px;
   width: 600px;
   height: 550px;
+  border: 2px solid white;
 }
 
 #div2 {
@@ -126,6 +240,7 @@ table, th, tr, td {
   top: -350px;
   width: 600px;
   height: 500px;
+  border: 2px solid white;
 }
 
 #div3 {
@@ -133,6 +248,7 @@ table, th, tr, td {
   top: -350px;
   width: 600px;
   height: 550px;
+  border: 2px solid white;
 }
 
 .split {
@@ -154,7 +270,25 @@ th {
   background-color: white;
 }
 
+/* ************* Footer **************  */
+footer {
+  background-color: #015701;
+  color: rgb(213, 219, 213);
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  height: 120px;
+}
+
 footer p {
   font-size: 25px;
-  color: aqua;
+  padding-top: 20px;
+  padding-bottom: 25px;
+  padding-left: 15px;
+}
+
+footer li {
+  display: inline;
+  padding-left: 20px;
 }

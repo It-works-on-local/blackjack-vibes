@@ -1,34 +1,79 @@
 body {
-  background-color: #006400;
+  background-color: #004b23;
 }
 
 a {
   text-decoration: none;
+  color: #cbdfbd;
+}
+
+#header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #015701;
 }
 
 h1 {
-  font-family: 'Dancing Script', cursive;
-  font-size: 6em;
+  color: #cbdfbd;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 4em;
   font-weight: bold;
   text-align: center;
-  padding-top: 50px;
-  color: #eae0d5;
+  padding: 30px 20px;
 }
 
+nav {
+  background-color: #006600;
+  color: #cbdfbd;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#spades {
+  height: 70px;
+  width: 50px;
+  position: relative;
+  margin-top: 20px;
+}
+
+#hearts {
+  height: 70px;
+  width: 50px;
+  position: relative;
+  margin-top: 20px;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+nav li {
+  font-size:2.5em;
+  font-weight: 700;
+  padding: 20px 100px
+}
+
+/**************** Body *****************/
+
 h2 {
-  font-family: 'Dancing Script', cursive;
-  font-size: 3em;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.5em;
   text-align: center;
   padding-top: 30px;
-  padding-bottom: 20px;
+  padding-bottom: 0px;
+  color: #cbdfbd;
 }
 
 div {
   width: 650px;
-  background-color: #adc178;
-  border: 5px solid #004b23;
+  background-color: #1d3601;
+  border: 3px solid white;
   margin: 40px;
-  /* display: inline-block; */
+  justify-content: center;
 }
 
 #top {
@@ -39,54 +84,88 @@ div {
 
 #top #left {
   width: 500px;
+  height: 550px;
+}
+
+#top #left img {
+  width: 470px;
   height: 500px;
-  position: relative;
+  padding: 0px 30px;
 }
 
 #top #middle {
-  position: relative;
-  width:500px;
-  height: 500px;
+  width: 500px;
+  height: 550px;
 }
 
 #middle iframe {
-  align-items: center;
-  margin-left: 27px;
-  padding-top: 10px;
+  width: 400px;
+  height: 350px;
+  padding: 80px 45px;
 }
 
 #top #right {
-  display: relative;
   width: 500px;
-  height: 500px;
+  height: 550px;
 }
 
-li {
-  padding: 10px;
-  text-align: center;
+#top #right img {
+  width: 400px;
+  height: 300px;
+  padding: 90px 50px;
+  
 }
 
-p {
-  margin-left: 5px;
-  margin-right: 5px;
-}
+/******************** Bottom Divs *********************/
 
 #bottom {
   display: flex;
   justify-content: space-evenly;
+  padding-bottom: 50px;
 }
 
-#play img {
-  width: 650px;
-  height: 600px;
-}
-
-#cheatsheet img {
-  padding: 75px;
+#bottom #left {
   width: 500px;
   height: 500px;
 }
+
+#bottom #right {
+  width: 500px;
+  height: 500px;
+}
+
+#bottom #right ul {
+  text-align: center;
+  padding-top: 40px;
+}
+
+#bottom #right li {
+  font-size: 1.5em;
+  padding: 30px 20px;
+}
+
+#bottom #right a {
+  color: white;
+}
+
+footer {
+  background-color: #015701;
+  color: rgb(213, 219, 213);
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  height: 120px;
+}
+
 footer p {
   font-size: 25px;
-  color: aqua;
+  padding-top: 20px;
+  padding-bottom: 25px;
+  padding-left: 15px;
+}
+
+footer li {
+  display: inline;
+  padding-left: 20px;
 }
