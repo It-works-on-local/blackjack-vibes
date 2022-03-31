@@ -13,6 +13,8 @@ let bet = 0;
 let dealer = document.getElementById('dealer-talk');
 let form = document.createElement('form');
 let insurance = false;
+let count = 0;
+let score = [];
 
 
 
@@ -94,23 +96,6 @@ new Card('king-diamonds', 10);
 
 // DOM manipulation for different player options.
 
-//
-
-
-function turnOrder(){
-
-  betting();
-  openingHand();
-
-  if (userHand.length > 0) {
-
-    renderOptions();
-
-  } else {
-    turnOrder();
-  }
-}
-
 
 // Shuffle stack of cards.
 
@@ -118,11 +103,11 @@ function shuffle(){
   deck = [];
   for(let i = 0; i < cardList.length; i++){
     let index = Math.floor(Math.random() * cardList.length);
-    if (!deck.includes(index)){
+    if (!deck.includes(cardList[index])){
       deck.push(cardList[index]);
     } else {
-      while(deck.includes(index)){
-        if (!deck.includes(index)){
+      while(deck.includes(cardList[index])){
+        if (!deck.includes(cardList[index])){
           deck.push(cardList[index]);
         } else {
           index = Math.floor(Math.random() * cardList.length);
@@ -166,7 +151,6 @@ function openingHand(){ //Find a way to make this pause when asking the user for
     formField.appendChild(no);
     no.addEventListener('click', handleInsureNo);
 
-    // Player has choice to risk .5 times their bet extra || if dealer has 21, player keeps bet, if not, lose insurance
 
   }
 
@@ -252,9 +236,38 @@ function hit(){
 
 // Player bet.
 function betting() {
-  // Add money to bet based on form input in gameroom.html
+  if(playerChips <= 0) { //NEED TO PULL NUMBERS FROM LOCAL STORAGE FOR SAVE GAME -------------------------------------------------
+    for(let i in score){
+      while(!score[i]){
+        count;
+      }
+    }
+    let stringScore = JSON.stringify(score);
+    localStorage.setItem('score', stringScore);
+  } else {
+    // Add money to bet based on form input in gameroom.html
+    talkbox('Please enter your bet.');
+    let betForm = document.createElement('form');
+    dealer.appendChild(betForm);
+    let userBet = document.createElement('fieldset');
+    betForm.appendChild(userBet);
+    let betLabel = document.createElement('label');
+    betLabel.setAttribute('for', 'bet');
+    userBet.appendChild(betLabel);
+    let betInput = document.createElement('input');
+    betInput.type = 'number';
+    betInput.id = 'bet';
+    betInput.name = 'bet';
+    userBet.appendChild(betInput);
+    let betSubmit = document.createElement('button');
+    betSubmit.type = 'submit';
+    betSubmit.textContent = 'Bet';
+    userBet.appendChild(betSubmit);
 
-  // Remove money from playerChips equal to the amount bet
+    betForm.addEventListener('submit', handleBet);
+    // Remove money from playerChips equal to the amount bet
+  }
+
 }
 
 // Double.
@@ -349,7 +362,9 @@ function renderDealer (){
   let dealerContainer = document.getElementById('dealer-container');
 
   if(dealerContainer.hasChildNodes()) {
-    dealerContainer.removeChild(dealerContainer.firstChild); // left off here before lunch....Jw
+    while(dealerContainer.hasChildNodes()){
+      dealerContainer.removeChild(dealerContainer.firstChild);
+    }
   }
 
   for(let i in dealerHand){
@@ -366,7 +381,9 @@ function renderPlayer(){
   let playerContainer = document.getElementById('player-container');
 
   if(playerContainer.hasChildNodes()) {
-    playerContainer.removeChild(playerContainer.firstChild); // left off here before lunch....Jw
+    while(playerContainer.hasChildNodes()){
+      playerContainer.removeChild(playerContainer.firstChild);
+    }
   }
 
   for(let i in userHand){
@@ -401,33 +418,18 @@ function handleHit(event){
   event.preventDefault();
 
   hit();
-  if (deck.length > 10){
-    turnOrder();
-  } else {
-    newRound();
-  }
 }
 
 function handleDouble(event){
   event.preventDefault();
 
   double();
-  if (deck.length > 10){
-    turnOrder();
-  }else {
-    newRound();
-  }
 }
 
 function handleSplit(event){
   event.preventDefault();
 
   split();
-  if (deck.length > 10){
-    turnOrder();
-  }else {
-    newRound();
-  }
 }
 
 function handleStand(event){
@@ -441,6 +443,25 @@ function handleStand(event){
   }
 }
 
+function handleBet(event){
+  event.preventDefault();
+
+  while(dealer.hasChildNodes()){
+    dealer.removeChild(dealer.firstChild);
+  }
+
+  count++;
+  let totalBet = +event.target.bet.value;
+  playerChips-=totalBet;
+
+  openingHand();
+
+  if (userHand.length > 0) {
+    renderOptions();
+  } else {
+    betting();
+  }
+}
 
 
 
@@ -448,7 +469,7 @@ function handleStand(event){
 
 function newRound(){
   shuffle();
-  turnOrder();
+  betting();
 }
 newRound();
 
