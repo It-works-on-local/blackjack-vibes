@@ -80,7 +80,8 @@ nav li {
   font-size: 3em;
   color: white;
   text-align: center;
-  padding: 15px 0px;
+  padding-top: 15px;
+  padding-bottom: 25px;
 }
 
 #dealer {
@@ -105,7 +106,25 @@ nav li {
 }
 
 #betinput {
+  font-size: 1.5em;
   color: white;
+}
+
+input[type="number"] {
+  width: 100px;
+}
+
+#dealer-talk {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+
+#talkbox {
+  font-size: 1.5em;
+  color: white;
+  width: 300px;  
 }
 
 #player {
@@ -124,14 +143,24 @@ nav li {
   font-size: 1.8em;
 }
 
+#player img {
+  width: 120px;
+  height: 180px;
+}
+
 #musicplayer {
   color: white;
   position: relative;
   width: 400px;
   height: 400px;
   margin-left: 1300px;
-  top: -600px;
+  top: -785px;
   border: 2px solid white;
+}
+
+#musicplayer h2 {
+  font-size: 2em;
+  padding: 35px;
 }
 
 #musicplayer iframe {
@@ -145,7 +174,7 @@ nav li {
 
 #key {
   margin-left: 450px;
-  margin-top: 100px;
+  margin-top: 80px;
   width: 300px;
   height: 300px;
   border: 2px solid white;
@@ -153,12 +182,15 @@ nav li {
 
 #key h2 {
   font-family: 'Libre Baskerville', serif;
+  font-size: 1.8em;
+  text-align: center;
   color: white;
+  padding-top: 30px;
 }
 
 #key ul {
-  margin-left: 85px;
-  padding-top: 5px;
+  padding-left: 85px;
+  padding-top: 30px;
 }
 
 #key li {
@@ -178,10 +210,15 @@ table, th, tr, td {
 
 #boxes {
   margin-left: 800px;
+  margin-top: 45px;
+  height:1350px;
 }
 
 #boxes h2 {
+  font-size: 2.5em;
+  text-align: center;
   color: white;
+  padding: 20px 0px;
 }
 
 #div1 {
