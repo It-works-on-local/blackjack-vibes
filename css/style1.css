@@ -60,7 +60,49 @@ nav li {
   padding: 20px 100px
 }
 
+/* ************* Game Room **************/
 
+#gametable {
+  background-color: #004b23;
+  position: relative;
+  width: 1200px;
+  height: 800px;
+  padding: 20px;
+  margin-top: 50px;
+  margin-left: 50px;
+  margin-bottom: 50px;
+  border: 3px solid white;
+}
+
+#gametable h2 {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: bolder;
+  font-size: 3em;
+  color: white;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 25px;
+}
+
+#dealer {
+  background-color: #004b23;
+  border: 2px solid white;
+  padding-top: 20px;
+  padding-left: 50px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  height: 250px;
+}
+
+#dealer h3 {
+  padding-bottom: 20px;
+  color: white;
+  font-size: 1.8em;
+}
+
+#dealer img {
+  width: 120px;
+  height: 180px;
 }
 
 #betinput {
