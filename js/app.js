@@ -98,12 +98,12 @@ new Card('king-diamonds', 10);
 // DOM manipulation for different player options.
 
 
-function (min, max){ // confused about the .eslint error that I am recieving. 
-  let min = min;
-  let max = max;
+// function (min, max){ // confused about the .eslint error that I am recieving. 
+//   let min = min;
+//   let max = max;
   
-  return Math.min(Math.max(5, 100))
-}
+//   return Math.min(Math.max(5, 100))
+// }
 
 
 // Shuffle stack of cards.
@@ -265,25 +265,14 @@ function betting() {
     localStorage.setItem('score', stringScore);
   } else {
     // Add money to bet based on form input in gameroom.html
+    let betInput = document.getElementById('betinput');
     talkbox('Please enter your bet.');
-    let betForm = document.createElement('form');
-    dealer.appendChild(betForm);
-    let userBet = document.createElement('fieldset');
-    betForm.appendChild(userBet);
-    let betLabel = document.createElement('label');
-    betLabel.setAttribute('for', 'bet');
-    userBet.appendChild(betLabel);
-    let betInput = document.createElement('input');
-    betInput.type = 'number';
-    betInput.id = 'bet';
-    betInput.name = 'bet';
-    userBet.appendChild(betInput);
     let betSubmit = document.createElement('button');
     betSubmit.type = 'submit';
     betSubmit.textContent = 'Bet';
-    userBet.appendChild(betSubmit);
+    betInput.appendChild(betSubmit);
 
-    betForm.addEventListener('submit', handleBet);
+    betInput.addEventListener('submit', handleBet);
     // Remove money from playerChips equal to the amount bet
   }
 
@@ -378,6 +367,8 @@ function split() {
   }
 
   //START WORK ON HITS
+
+  // userHand = userHand1;
 
 }
 
