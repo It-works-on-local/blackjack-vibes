@@ -323,6 +323,42 @@ function double() {
 
 // Split.
 function split() {
+  let splitBet = bet;
+  playerChips -= splitBet;
+  let splitElem = document.getElementById('player-container');
+  let hand1 = document.createElement('div');
+  hand1.id = 'hand1';
+  splitElem.appendChild(hand1);
+  let hand2 = document.createElement('div');
+  hand2.id = 'hand2';
+  splitElem.appendChild(hand2);
+
+  let userHand1 = [];
+  let userHand2 = [];
+  userHand2[0] = userHand.pop();
+  userHand1[0] = userHand.pop();
+
+  if(splitElem.hasChildNodes()) {
+    while(splitElem.hasChildNodes()){
+      splitElem.removeChild(splitElem.firstChild);
+    }
+  }
+
+  for(let i in userHand1){
+    let splitCard = document.createElement('img');
+    splitCard.src = userHand1[i].img;
+    splitCard.alt = userHand1[i].name;
+    hand1.appendChild(splitCard);
+  }
+
+  for(let i in userHand2){
+    let splitCard = document.createElement('img');
+    splitCard.src = userHand2[i].img;
+    splitCard.alt = userHand2[i].name;
+    hand2.appendChild(splitCard);
+  }
+
+  //START WORK ON HITS
 
 }
 
@@ -367,7 +403,7 @@ function stand() {
         }
       }
     }
-  }, 2*1000);
+  }, 1000);
   let dealerTotal = handTotal;
   handTotal = 0;
   for(let i in userHand) {
