@@ -18,6 +18,7 @@ let score = [];
 
 
 
+
 // ************ CONSTRUCTOR FUNCTIONS ************
 
 function Card (name, value){
@@ -97,6 +98,14 @@ new Card('king-diamonds', 10);
 // DOM manipulation for different player options.
 
 
+function (min, max){ // confused about the .eslint error that I am recieving. 
+  let min = min;
+  let max = max;
+  
+  return Math.min(Math.max(5, 100))
+}
+
+
 // Shuffle stack of cards.
 
 function shuffle(){
@@ -119,7 +128,7 @@ function shuffle(){
 
 // Deals opening hand to dealer and user
 
-function openingHand(){ //Find a way to make this pause when asking the user for insurance.
+function openingHand(){
   let handTotal = 0;
   let card = deck.pop();
   userHand[0] = card;
@@ -129,8 +138,15 @@ function openingHand(){ //Find a way to make this pause when asking the user for
   userHand[1] = card;
   card = deck.pop();
   dealerHand[1] = card;
-  renderDealer();
-  renderPlayer();
+
+  if(deck > 10){ // Creating a new round if userHand is less than 10?
+    betting();
+  }else{
+    renderDealer();
+    renderPlayer();
+  }
+
+
 
   if(dealerHand[0].value === 11) {
     // Dealer asks players if they want insurance
@@ -231,6 +247,9 @@ function hit(){
 
   } else {
     talkbox(`Your total is ${handTotal}`);
+  }
+  if (userHand >= 21){ //Creating new round if userHand is greater than or equal to 21.
+    newRound();
   }
 }
 
@@ -404,7 +423,7 @@ function handleInsureYes(event){
 
   let insuredBet = bet * 0.5;
   playerChips -= insuredBet;
-  bet += insuredBet; 
+  bet += insuredBet;
   form.removeChild(form.firstChild);
 }
 
