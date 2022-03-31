@@ -98,10 +98,10 @@ new Card('king-diamonds', 10);
 // DOM manipulation for different player options.
 
 
-// function (min, max){ // confused about the .eslint error that I am recieving. 
+// function (min, max){ // confused about the .eslint error that I am recieving.
 //   let min = min;
 //   let max = max;
-  
+
 //   return Math.min(Math.max(5, 100))
 // }
 
@@ -247,6 +247,7 @@ function hit(){
 
   } else {
     talkbox(`Your total is ${handTotal}`);
+    renderHitOptions();
   }
   if (userHand >= 21){ //Creating new round if userHand is greater than or equal to 21.
     newRound();
@@ -368,7 +369,7 @@ function split() {
 
   //START WORK ON HITS
 
-  // userHand = userHand1;
+  userHand = userHand1;
 
 }
 
@@ -472,7 +473,7 @@ function talkbox(statement) {
 function renderOptions(){
 
   dealer.appendChild(form);
-  form.setAttribute('id', 'insurance');
+  form.setAttribute('id', 'options');
   let formField = document.createElement('fieldset');
   form.appendChild(formField);
 
@@ -493,6 +494,23 @@ function renderOptions(){
   split.textContent = 'split';
   formField.appendChild(split);
   split.addEventListener('click', handleSplit);
+
+  let stand = document.createElement('button');
+  stand.setAttribute('type', 'submit');
+  stand.textContent = 'stand';
+  formField.appendChild(stand);
+  stand.addEventListener('click', handleStand);
+}
+
+function renderHitOptions(){
+  let formField = document.createElement('fieldset');
+  form.appendChild(formField);
+
+  let hit = document.createElement('button');
+  hit.setAttribute('type', 'submit');
+  hit.textContent = 'hit';
+  formField.appendChild(hit);
+  hit.addEventListener('click', handleHit);
 
   let stand = document.createElement('button');
   stand.setAttribute('type', 'submit');
@@ -615,6 +633,3 @@ function newRound(){
   betting();
 }
 newRound();
-
-
-
