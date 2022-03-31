@@ -7,7 +7,7 @@ let cardList = [];
 let deck = [];
 let userHand = [];
 let dealerHand = [];
-let playerChips = 0;
+let playerChips = 150;
 let handTotal = 0;
 let bet = 0;
 let dealer = document.getElementById('dealer-talk');
@@ -272,8 +272,12 @@ function betting() {
 
 // Double.
 function double() { // IN PROGRESS
+  let doubleBet = Math.floor(bet * 0.5);
+  bet += doubleBet;
+  playerChips -= doubleBet;
   let oneMoreCard = deck.pop();
   userHand.push(oneMoreCard);
+  renderPlayer();
   handTotal = 0;
   for(let i in userHand){
     handTotal += userHand[i].value;
@@ -289,10 +293,20 @@ function double() { // IN PROGRESS
           }
         }
       }
+      if(deck.length > 10) {
+        betting();
+      } else {
+        newRound();
+      }
     } else {
       bet = 0;
       userHand = [];
       dealerHand = [];
+      if(deck.length > 10) {
+        betting();
+      } else {
+        newRound();
+      }
     }
   }
 }
@@ -305,8 +319,16 @@ function split() {
 }
 
 // Pass/Dealer takes over.
-function pass() {
-
+function stand() {
+  handTotal = 0;
+  for(let i in dealerHand) {
+    handTotal += dealerHand[i].value;
+  }
+  while(handTotal < 21) {
+    let newCard = deck.pop();
+    dealerHand.push(newCard);
+    handTotal += dealerHand[dealerHand.length - 1];
+  }
 }
 
 // If the dealer and the player both have cards under 22, check who wins!!
@@ -404,7 +426,7 @@ function handleInsureYes(event){
 
   let insuredBet = bet * 0.5;
   playerChips -= insuredBet;
-  bet += insuredBet; 
+  bet += insuredBet;
   form.removeChild(form.firstChild);
 }
 
@@ -437,7 +459,7 @@ function handleStand(event){
 
   stand();
   if (deck.length > 10){
-    turnOrder();
+    betting();
   }else {
     newRound();
   }
