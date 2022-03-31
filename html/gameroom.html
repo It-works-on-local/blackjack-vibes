@@ -33,16 +33,7 @@
     </nav>
   </header>
 
-  <!-- <nav>
-      <ul>
-        <li id="home"><a href="../index.html">Home</a></li>
-        <li id="main">Blackjack Vibes</li>
-        <li id="cheatsheet"><a href="cheatsheet.html">Cheatsheet</a></li>
-      </ul>
-    </nav> -->
-
   <main>
-
     <div id="gametable">
       <h2>Game Table</h2>
 
@@ -52,12 +43,16 @@
           <img src="../img/card-back.jpg" alt="">
       </div>
 
-      <form id="betinput">
-        <label for="bet">Your Bet:</label>
-        <input type="number" name="yourbet" id="bet" size="10">
-      </form>
-      
-      <section id="dealer-talk"></section>
+      <section id="dealer-talk">
+
+        <form id="betinput">
+          <label for="bet">Your Bet:</label>
+          <input type="number" name="yourbet" id="bet">
+        </form>
+        <div id="talkbox">
+          Message:
+        </div>
+      </section>
 
       <div id="player">
         <h3>Player's cards:</h3>
