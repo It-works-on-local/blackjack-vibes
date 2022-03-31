@@ -42,28 +42,36 @@
     </nav> -->
 
   <main>
-    <section id="dealer-container">
-
-    </section>
-    <section id="player-container">
-
-    </section>
 
     <div id="gametable">
       <h2>Game Table</h2>
 
       <div id="dealer">
         <h3>Dealer's cards:</h3>
-        <img src="../img/ace-clubs.jpg" alt="">
+        <section id="dealer-container">
+          <img src="../img/card-back.jpg" alt="">
       </div>
+
+      <form id="betinput">
+        <label for="bet">Your Bet:</label>
+        <input type="number" name="yourbet" id="bet" size="10">
+      </form>
+      
       <section id="dealer-talk"></section>
-    </div>
-    <div id="musicplayer">
-      <h2>Music player</h2>
-      <iframe width="350" height="250" src="https://www.youtube.com/embed/5qap5aO4i9A" title="YouTube video player"
-        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen></iframe>
-    </div>
+
+      <div id="player">
+        <h3>Player's cards:</h3>
+        <section id="player-container">
+      </div>
+
+      <div id="musicplayer">
+        <h2>Music player</h2>
+        <iframe width="350" height="250" src="https://www.youtube.com/embed/5qap5aO4i9A" title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+
   </main>
   <footer>
     <p>Blackjack Vibes &copy;</p>
