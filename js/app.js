@@ -177,6 +177,7 @@ function openingHand(){
   if(handTotal === 21){
     if(insurance === true){
       playerChips += bet;
+      renderChips();
       bet = 0;
       // Dealer informs player they have 21
       talkbox('I have a blackjack, you can keep your bet.');
@@ -203,6 +204,7 @@ function openingHand(){
   if(handTotal === 21){
     let payout = bet * 2.5;
     playerChips += payout;
+    renderChips();
     // Dealer informs player the player has 21
     talkbox('Congratulations, you have a blackjack!');
     userHand = [];
@@ -284,6 +286,7 @@ function double() {
   let doubleBet = Math.floor(bet * 0.5);
   bet += doubleBet;
   playerChips -= doubleBet;
+  renderChips();
   let oneMoreCard = deck.pop();
   userHand.push(oneMoreCard);
   renderPlayer();
@@ -334,6 +337,7 @@ function double() {
 function split() {
   let splitBet = bet;
   playerChips -= splitBet;
+  renderChips();
   let splitElem = document.getElementById('player-container');
   let hand1 = document.createElement('div');
   hand1.id = 'hand1';
@@ -403,6 +407,7 @@ function stand() {
           dealerHand = [];
           renderDealer();
           playerChips += bet;
+          renderChips();
           bet = 0;
           if(deck.length > 10) {
             betting();
@@ -427,6 +432,7 @@ function stand() {
     dealerHand = [];
     renderDealer();
     playerChips += bet;
+    renderChips();
     bet = 0;
     if(deck.length > 10) {
       betting();
@@ -465,6 +471,7 @@ function talkbox(statement) {
   dialogue.textContent = statement;
   dealer.appendChild(dialogue);
 }
+
 
 // ************ DOM MANIPULATION FOR DEALER & USER CARDS ************
 
@@ -529,11 +536,17 @@ function renderDealer (){
   }
 
   for(let i in dealerHand){
-
-    let bjvImg = document.createElement('img');
-    bjvImg.src = dealerHand[i].img;
-    bjvImg.alt = dealerHand[i].name;
-    dealerContainer.appendChild(bjvImg);
+    if(i == 1) {
+      let bjvImg = document.createElement('img');
+      bjvImg.src = '../img/card-back.jpg';
+      bjvImg.alt = dealerHand[i].name;
+      dealerContainer.appendChild(bjvImg);
+    } else {
+      let bjvImg = document.createElement('img');
+      bjvImg.src = dealerHand[i].img;
+      bjvImg.alt = dealerHand[i].name;
+      dealerContainer.appendChild(bjvImg);
+    }
 
   }
 }
@@ -556,6 +569,14 @@ function renderPlayer(){
   }
 }
 
+function renderChips(){
+  let chips = document.getElementById('chip');
+  let number = document.createElement('div');
+  number.id = 'chip-count';
+  number.textContent = playerChips;
+  chips.appendChild(number);
+}
+
 // ************ EVENT HANDLERS ************
 
 
@@ -565,6 +586,7 @@ function handleInsureYes(event){
 
   let insuredBet = bet * 0.5;
   playerChips -= insuredBet;
+  renderChips();
   bet += insuredBet;
   form.removeChild(form.firstChild);
 }
@@ -614,6 +636,7 @@ function handleBet(event){
   count++;
   let totalBet = +event.target.bet.value;
   playerChips-=totalBet;
+  renderChips();
 
   openingHand();
 
@@ -632,4 +655,5 @@ function newRound(){
   shuffle();
   betting();
 }
+renderChips();
 newRound();
