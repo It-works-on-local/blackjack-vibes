@@ -1,0 +1,310 @@
+/* css for gameroom and cheatsheet */
+
+body {
+  background-color: #004b23;
+}
+
+a {
+  text-decoration: none;
+  color: #cbdfbd;
+}
+
+
+#header {
+  background-color: #015701;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+h1 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 4em;
+  font-weight: bold;
+  color: #cbdfbd;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+nav {
+  background-color: #006600;
+  color: #cbdfbd;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#spades {
+  height: 70px;
+  width: 50px;
+  position: relative;
+  margin-top: 20px;
+}
+
+#hearts {
+  height: 70px;
+  width: 50px;
+  position: relative;
+  margin-top: 20px;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+nav li {
+  font-size:2.5em;
+  font-weight: 700;
+  padding: 20px 100px
+}
+
+/* ************* Game Room **************/
+
+#gametable {
+  background-color: #004b23;
+  position: relative;
+  width: 1200px;
+  height: 900px;
+  padding: 20px;
+  margin-top: 50px;
+  margin-left: 50px;
+  margin-bottom: 50px;
+  border: 3px solid white;
+}
+
+#gametable h2 {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: bolder;
+  font-size: 3em;
+  color: white;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 25px;
+}
+
+#dealer {
+  background-color: #004b23;
+  border: 2px solid white;
+  padding-top: 20px;
+  padding-left: 50px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  height: 250px;
+}
+
+#dealer h3 {
+  padding-bottom: 20px;
+  color: white;
+  font-size: 1.8em;
+}
+
+img {
+  width: 120px;
+  height: 180px;
+  padding-right: 10px;
+}
+
+#dealer-talk {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 20px;
+  color: white;
+  font-size: 2em;
+  font-family: monospace;
+}
+
+#betandchip {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  font-size: 1.5em;
+  font-family: monospace;
+  color: white;
+  padding: 10px;
+}
+
+input[type="number"] {
+  width: 100px;
+}
+
+#gamebuttons {
+  padding-left: 200px;
+}
+
+#chip {
+  padding-left: 200px;
+}
+
+/* #talkbox {
+  font-size: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: white;
+  width: 300px;  
+} */
+
+#player {
+  position: relative;
+  background-color:#004b23;
+  border: 2px solid white;
+  padding-top: 20px;
+  padding-left: 50px;
+  padding-bottom: 20px;
+  margin-top: 20px;
+  height: 250px;
+}
+
+#player h3 {
+  padding-bottom: 20px;
+  color: white;
+  font-size: 1.8em;
+}
+
+#player img {
+  width: 120px;
+  height: 180px;
+}
+
+#musicplayer {
+  color: white;
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin-left: 1300px;
+  top: -785px;
+  border: 2px solid white;
+}
+
+#musicplayer h2 {
+  font-size: 2em;
+  padding: 35px;
+}
+
+#musicplayer iframe {
+  align-items: center;
+  margin-left: 27px;
+  padding-top: 10px;
+}
+
+
+/* ************* cheatsheet page ************** */
+
+
+#key {
+  margin-left: 450px;
+  margin-top: 80px;
+  width: 300px;
+  height: 300px;
+  border: 2px solid white;
+}
+
+#key h2 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.8em;
+  text-align: center;
+  color: white;
+  padding-top: 30px;
+}
+
+#key ul {
+  padding-left: 85px;
+  padding-top: 30px;
+}
+
+#key li {
+  padding: 7px;
+  font-size: 1.5em;
+  width: 53%;
+}
+
+table, th, tr, td {
+  border: 2px solid;
+  text-align: center;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+}
+
+#boxes {
+  margin-left: 800px;
+  margin-top: 45px;
+  height:1350px;
+}
+
+#boxes h2 {
+  font-size: 2.5em;
+  text-align: center;
+  color: white;
+  padding: 20px 0px;
+}
+
+#div1 {
+  position: relative;
+  top: -350px;
+  width: 600px;
+  height: 550px;
+  border: 2px solid white;
+}
+
+#div2 {
+  position: relative;
+  top: -350px;
+  width: 600px;
+  height: 500px;
+  border: 2px solid white;
+}
+
+#div3 {
+  position: relative;
+  top: -350px;
+  width: 600px;
+  height: 550px;
+  border: 2px solid white;
+}
+
+.split {
+  background-color: red;
+}
+
+.stand {
+  background-color: lightblue;
+}
+
+.hit {
+  background-color: yellow;
+}
+
+.double {
+  background-color: orange;
+}
+th {
+  background-color: white;
+}
+
+/* ************* Footer **************  */
+footer {
+  background-color: #015701;
+  color: rgb(213, 219, 213);
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  height: 120px;
+}
+
+footer p {
+  font-size: 25px;
+  padding-top: 20px;
+  padding-bottom: 25px;
+  padding-left: 15px;
+}
+
+footer li {
+  display: inline;
+  padding-left: 20px;
+}

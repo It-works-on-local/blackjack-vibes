@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cheat sheet - Blackjack Vibes</title>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/style1.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <section id="header">
+      <img src="../img/ace-spades.jpg" id="spades" alt="">
+      <h1>Blackjack Vibes</h1>
+      <img src="../img/ace-hearts.jpg" id="hearts" alt="">
+    </section>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="gameroom.html">Play Blackjack </a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div id="key">
+      <h2>Key</h2>
+      <ul>
+        <li class="stand">S = Stand</li>
+        <li class="split">SP = Split</li>
+        <li class="double">D = Double</li>
+        <li class="hit">H = Hit</li>
+      </ul>
+    </div>
+
+    <section id="boxes">
+      <!-------------- pairs  -------------->
+      <div id="div1">
+        <table id="pairs">
+          <thead>
+            <h2>Pairs</h2>
+            <tr>
+              <th></th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+              <th>5</th>
+              <th>6</th>
+              <th>7</th>
+              <th>8</th>
+              <th>9</th>
+              <th>10</th>
+              <th>A</th>
+            </tr>
+          </thead>
+          <tr>
+            <th>A,A</th>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+          </tr>
+          <tr>
+            <th>10,10</th>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+          </tr>
+          <tr>
+            <th>9,9</th>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="stand">S</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+          </tr>
+          <tr>
+            <th>8,8</th>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+          </tr>
+          <tr>
+            <th>7,7</th>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+          </tr>
+          <tr>
+            <th>6,6</th>
+            <td class="hit">H</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+          </tr>
+          <tr>
+            <th>5,5</th>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+          </tr>
+          <tr>
+            <th>4,4</th>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+          </tr>
+          <tr>
+            <th>3,3</th>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+          </tr>
+          <tr>
+            <th>2,2</th>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="split">SP</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+          </tr>
+
+        </table>
+      </div>
+
+      <!----------------- softhands ----------------->
+      <div id="div2">
+        <table id="softhands">
+          <thead>
+            <h2>Soft Hands</h2>
+            <tr>
+              <th></th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+              <th>5</th>
+              <th>6</th>
+              <th>7</th>
+              <th>8</th>
+              <th>9</th>
+              <th>10</th>
+              <th>A</th>
+            </tr>
+          </thead>
+          <tr>
+            <th>A,9</th>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+          </tr>
+          <tr>
+            <th>A,8</th>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+          </tr>
+          <tr>
+            <th>A,7</th>
+            <td class="stand">S</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+          </tr>
+          <tr>
+            <th>A,6</th>
+            <td class="hit">H</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+          </tr>
+          <tr>
+            <th>A,5</th>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+          </tr>
+          <tr>
+            <th>A,4</th>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+          </tr>
+          <tr>
+            <th>A,3</th>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+          </tr>
+          <tr>
+            <th>A,2</th>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="double">D</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+          </tr>
+        </table>
+      </div>
+
+      <!--------------- hardhands --------------->
+      <div id="div3">
+        <table id="hardhands">
+          <thead>
+            <h2>Hard Hands</h2>
+            <tr>
+              <th></th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+              <th>5</th>
+              <th>6</th>
+              <th>7</th>
+              <th>8</th>
+              <th>9</th>
+              <th>10</th>
+              <th>A</th>
+            </tr>
+          </thead>
+          <tr>
+            <th>17</th>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+          </tr>
+          <tr>
+            <th>16</th>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+          </tr>
+          <tr>
+            <th>15</th>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+          </tr>
+          <tr>
+            <th>14</th>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+          </tr>
+          <tr>
+            <th>13</th>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+          </tr>
+          <tr>
+            <th>12</th>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="stand">S</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+          </tr>
+          <tr>
+            <th>11</th>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="hit">H</td>
+          </tr>
+          <tr>
+            <th>10</th>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+          </tr>
+          <tr>
+            <th>9</th>
+            <td class="hit">H</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="double">D</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+          </tr>
+          <tr>
+            <th>8</th>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+            <td class="hit">H</td>
+          </tr>
+
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+<footer>
+  <p>Blackjack Vibes &copy;</p>
+  <ul>
+    <li>Dana Huffman</li>
+    <li>Jason Wilson</li>
+    <li>Simon Son</li>
+    <li>Stanley Wilder</li>
+  </ul>
+</footer>
+
+</html>

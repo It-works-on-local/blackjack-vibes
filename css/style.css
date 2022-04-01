@@ -1,0 +1,171 @@
+body {
+  background-color: #004b23;
+}
+
+a {
+  text-decoration: none;
+  color: #cbdfbd;
+}
+
+#header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #015701;
+}
+
+h1 {
+  color: #cbdfbd;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 4em;
+  font-weight: bold;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+nav {
+  background-color: #006600;
+  color: #cbdfbd;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#spades {
+  height: 70px;
+  width: 50px;
+  position: relative;
+  margin-top: 20px;
+}
+
+#hearts {
+  height: 70px;
+  width: 50px;
+  position: relative;
+  margin-top: 20px;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+nav li {
+  font-size:2.5em;
+  font-weight: 700;
+  padding: 20px 100px
+}
+
+/**************** Body *****************/
+
+h2 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.5em;
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 0px;
+  color: #cbdfbd;
+}
+
+div {
+  width: 650px;
+  background-color: #1d3601;
+  border: 3px solid white;
+  margin: 40px;
+  justify-content: center;
+}
+
+#top {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 50px;
+}
+
+#top #lefty {
+  width: 500px;
+  height: 550px;
+}
+
+#top #lefty img {
+  width: 470px;
+  height: 500px;
+  padding: 0px 30px;
+}
+
+#top #middle {
+  width: 500px;
+  height: 550px;
+}
+
+#middle iframe {
+  width: 400px;
+  height: 350px;
+  padding: 80px 45px;
+}
+
+#top #right {
+  width: 500px;
+  height: 550px;
+}
+
+#top #right img {
+  width: 400px;
+  height: 300px;
+  padding: 90px 50px;
+  
+}
+
+/******************** Bottom Divs *********************/
+
+#bottom {
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 50px;
+}
+
+#bottom #left {
+  width: 500px;
+  height: 500px;
+}
+
+#bottom #right {
+  width: 500px;
+  height: 500px;
+}
+
+#bottom #right ul {
+  text-align: center;
+  padding-top: 40px;
+}
+
+#bottom #right li {
+  font-size: 1.5em;
+  padding: 30px 20px;
+}
+
+#bottom #right a {
+  color: white;
+}
+
+footer {
+  background-color: #015701;
+  color: rgb(213, 219, 213);
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  height: 120px;
+}
+
+footer p {
+  font-size: 25px;
+  padding-top: 20px;
+  padding-bottom: 25px;
+  padding-left: 15px;
+}
+
+footer li {
+  display: inline;
+  padding-left: 20px;
+}
