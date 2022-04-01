@@ -11,6 +11,7 @@ let playerChips = 150;
 let handTotal = 0;
 let bet = 0;
 let dealer = document.getElementById('dealer-talk');
+let buttons = document.getElementById('gamebuttons');
 let form = document.createElement('form');
 let insurance = false;
 let count = 0;
@@ -260,8 +261,8 @@ function hit(){
 function betting() {
   if(playerChips <= 0) { //NEED TO PULL NUMBERS FROM LOCAL STORAGE FOR SAVE GAME -------------------------------------------------
     for(let i in score){
-      while(!score[i]){
-        count;
+      if(!score[i]){
+        score[i] = count;
       }
     }
     let stringScore = JSON.stringify(score);
@@ -478,8 +479,11 @@ function talkbox(statement) {
 
 // Any time the player or dealer gets a new card, re-render their hand. run through user/dealer hand to append images to match the 'container' names.
 function renderOptions(){
+  while(buttons.hasChildNodes()){
+    buttons.removeChild(buttons.firstChild);
+  }
 
-  dealer.appendChild(form);
+  buttons.appendChild(form);
   form.setAttribute('id', 'options');
   let formField = document.createElement('fieldset');
   form.appendChild(formField);
@@ -510,8 +514,15 @@ function renderOptions(){
 }
 
 function renderHitOptions(){
+  while(buttons.firstChild){
+    console.log('loop');
+    buttons.removeChild(buttons.firstChild);
+  }
+  let newForm = document.createElement('form');
+  buttons.appendChild(newForm);
   let formField = document.createElement('fieldset');
-  form.appendChild(formField);
+  console.log('apended-form');
+  newForm.appendChild(formField);
 
   let hit = document.createElement('button');
   hit.setAttribute('type', 'submit');
@@ -571,6 +582,9 @@ function renderPlayer(){
 
 function renderChips(){
   let chips = document.getElementById('chip');
+  if(chips.childElementCount > 1) {
+    chips.removeChild(chips.lastChild);
+  }
   let number = document.createElement('div');
   number.id = 'chip-count';
   number.textContent = playerChips;
